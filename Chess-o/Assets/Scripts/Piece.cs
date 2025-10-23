@@ -32,6 +32,6 @@ public class Piece : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        gameObject.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
