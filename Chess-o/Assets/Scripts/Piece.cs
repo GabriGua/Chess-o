@@ -43,9 +43,29 @@ public class Piece : MonoBehaviour, IPointerClickHandler
         {
             if (collision.gameObject.tag == "cell")
             {
-                Debug.Log("cell");
+                
                 cell = collision.GetComponent<Cell>();
                 coordinates = cell.gridPosition;
+                cell.OccupyCell(gameObject);
+                if(cell.pieceInCell != gameObject)
+                {
+                    coordinates = cell.gridPosition;
+                }
+            }
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision != null)
+        {
+            if (collision.gameObject.tag == "cell")
+            {
+                
+                cell = collision.GetComponent<Cell>();
+                
+                cell.DeoccupyCell();
             }
 
         }

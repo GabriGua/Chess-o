@@ -28,6 +28,12 @@ public class CellGeneration : MonoBehaviour
                 GameObject newCell = Instantiate(cellPrefab, transform);
                 newCell.transform.position = new Vector3(i * cellSize, j * cellSize, 0);
                 newCell.GetComponent<Cell>().Init(new Vector2Int(i, j));
+                if(j <= 1 || j >= width -1)
+                {
+                    newCell.GetComponent<Cell>().OccupyCell(null);
+                    newCell.GetComponent<Cell>().pieceOverCell--;
+                    
+                }
                 arrayCell[i,j] = newCell;
 
             }
@@ -42,8 +48,17 @@ public class CellGeneration : MonoBehaviour
         int c = -1;
         int m = 1;
         SpriteRenderer spriteRenderer;
-        if (selected)
-        {
+        for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    spriteRenderer = arrayCell[i, j].GetComponent<SpriteRenderer>();
+                    spriteRenderer.sprite = null;
+
+                }
+            }
+        if(selected)
+        { 
             switch (data.type)
             {
 
@@ -52,6 +67,46 @@ public class CellGeneration : MonoBehaviour
 
                     Debug.Log("king");
 
+
+                    for (int i = 0; i < 3; i++)
+                    {
+
+                        for (int j = 0; j < 3; j++)
+                        {
+
+                            if (c == 0 && m == 0)
+                            {
+
+                            }
+                            else
+                            {
+                                if (arrayCell[x + c,y + m].GetComponent<Cell>().occupiedCell == false)
+                                {
+                                    spriteRenderer = arrayCell[x + c, y + m].GetComponent<SpriteRenderer>();
+                                    if (data.isGreen)
+                                    {
+                                        spriteRenderer.sprite = green;
+                                    }
+                                    else
+                                    {
+                                        spriteRenderer.sprite = pink;
+                                    }
+                                }
+                                
+                            }
+
+
+
+                            c++;
+                        }
+                        c = -1;
+                        m--;
+                    }
+
+
+                    break;
+
+                case PieceType.Queen:
                     for (int i = 0; i < 3; i++)
                     {
 
@@ -82,12 +137,6 @@ public class CellGeneration : MonoBehaviour
                         c = -1;
                         m--;
                     }
-
-
-                    break;
-
-                case PieceType.Queen:
-
                     break;
 
                 case PieceType.Pawn:
