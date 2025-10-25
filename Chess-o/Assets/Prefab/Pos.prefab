@@ -136,7 +136,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!114 &3614795636411514693
 MonoBehaviour:
@@ -152,3 +152,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cell
   gridPosition: {x: 0, y: 0}
   occupiedCell: 0
+  pieceOverCell: 0
+  pieceInCell: {fileID: 0}

@@ -13,6 +13,8 @@ public class CellGeneration : MonoBehaviour
     [SerializeField] Sprite pink;
     [SerializeField] Sprite green;
 
+    GameObject selectedPiece;
+
     void Start()
     {
         arrayCell = new GameObject[width, height];
@@ -41,12 +43,14 @@ public class CellGeneration : MonoBehaviour
 
     }
 
-    public void UpdatePossibleMoves(ChessPieces data, Vector2Int coordinates, bool selected)
+    public void UpdatePossibleMoves(ChessPieces data, Vector2Int coordinates, bool selected, GameObject currentPiece)
     {
+        selectedPiece = currentPiece;
         int x = coordinates.x;
         int y = coordinates.y;
-        int c = -1;
-        int m = 1;
+        int c;
+        int m;
+
         SpriteRenderer spriteRenderer;
         for (int i = 0; i < width; i++)
             {
@@ -67,6 +71,9 @@ public class CellGeneration : MonoBehaviour
 
                     Debug.Log("king");
 
+                    //offset
+                     c = -1;
+                     m = 1;
 
                     for (int i = 0; i < 3; i++)
                     {
@@ -80,18 +87,27 @@ public class CellGeneration : MonoBehaviour
                             }
                             else
                             {
-                                if (arrayCell[x + c,y + m].GetComponent<Cell>().occupiedCell == false)
+                                //border chessboard check
+                                int checkX = x + c;
+                                int checkY = y + m;
+
+                                if(checkX >= 0 && checkX < width && checkY >= 0 && checkY < height)
                                 {
-                                    spriteRenderer = arrayCell[x + c, y + m].GetComponent<SpriteRenderer>();
-                                    if (data.isGreen)
+                                    if (arrayCell[x + c,y + m].GetComponent<Cell>().occupiedCell == false)
                                     {
-                                        spriteRenderer.sprite = green;
-                                    }
-                                    else
-                                    {
-                                        spriteRenderer.sprite = pink;
+                                        spriteRenderer = arrayCell[x + c, y + m].GetComponent<SpriteRenderer>();
+                                        arrayCell[x + c, y + m].GetComponent<Cell>().FindSelectedPiece(selectedPiece);
+                                        if (data.isGreen)
+                                        {
+                                            spriteRenderer.sprite = green;
+                                        }
+                                        else
+                                        {
+                                            spriteRenderer.sprite = pink;
+                                        }
                                     }
                                 }
+                                
                                 
                             }
 
@@ -107,6 +123,10 @@ public class CellGeneration : MonoBehaviour
                     break;
 
                 case PieceType.Queen:
+
+                    c = -1;
+                    m = 1;
+
                     for (int i = 0; i < 3; i++)
                     {
 
@@ -140,8 +160,46 @@ public class CellGeneration : MonoBehaviour
                     break;
 
                 case PieceType.Pawn:
+                    
+                    m = 1;
 
-                    break;
+                    if (y == 1 )
+                    {
+                        for(int i = 0; i < 2; i++)
+                        {
+                            if (arrayCell[x, y + m].GetComponent<Cell>().occupiedCell == false)
+                            {
+                                spriteRenderer = arrayCell[x , y + m].GetComponent<SpriteRenderer>();
+                                if (data.isGreen)
+                                {
+                                    spriteRenderer.sprite = green;
+                                }
+                                else
+                                {
+                                    spriteRenderer.sprite = pink;
+                                }
+                            }
+                            m++;
+                        }
+                        
+                    }
+                    else
+                    {
+                        if (arrayCell[x, y + m].GetComponent<Cell>().occupiedCell == false)
+                        {
+                            spriteRenderer = arrayCell[x, y + m].GetComponent<SpriteRenderer>();
+                            if (data.isGreen)
+                            {
+                                spriteRenderer.sprite = green;
+                            }
+                            else
+                            {
+                                spriteRenderer.sprite = pink;
+                            }
+                        }
+                    }
+
+                        break;
                 case PieceType.Knight:
 
                     break;

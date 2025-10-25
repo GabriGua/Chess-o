@@ -34,7 +34,7 @@ public class Piece : MonoBehaviour, IPointerClickHandler
             selected = true;
         }
 
-            cellGeneration.UpdatePossibleMoves(data, coordinates, selected);
+            cellGeneration.UpdatePossibleMoves(data, coordinates, selected, gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,10 +47,7 @@ public class Piece : MonoBehaviour, IPointerClickHandler
                 cell = collision.GetComponent<Cell>();
                 coordinates = cell.gridPosition;
                 cell.OccupyCell(gameObject);
-                if(cell.pieceInCell != gameObject)
-                {
-                    coordinates = cell.gridPosition;
-                }
+                
             }
 
         }
@@ -69,5 +66,11 @@ public class Piece : MonoBehaviour, IPointerClickHandler
             }
 
         }
+    }
+
+    public void ResetCellOccupation(Cell cell)
+    {
+        
+        coordinates = cell.gridPosition;
     }
 }
