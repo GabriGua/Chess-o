@@ -10,6 +10,8 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     public GameObject pieceInCell;
 
     public GameObject selectedPiece;
+    public CellGeneration cellGeneration;
+
 
     public void Init(Vector2Int pos)
     {
@@ -50,20 +52,25 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         
     }
 
-    public void FindSelectedPiece(GameObject piece)
+    public void FindSelectedPiece(GameObject piece, CellGeneration cellGen)
     {
         selectedPiece = piece;
+        cellGeneration = cellGen;
 
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Via");
+        
         MovePieceToCell(selectedPiece, gameObject.transform.position);
     }
     public void MovePieceToCell(GameObject selectedPiece, Vector2 targetPosition)
     {
-        
+        if(cellGeneration != null)
+        {
+            cellGeneration.ResetBoard();
+        }
+        selectedPiece.GetComponent<Piece>().DeSelectPiece();
         StartCoroutine(MovePieceSmoothly(selectedPiece, targetPosition));
     }
 

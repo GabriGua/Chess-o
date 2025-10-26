@@ -73,4 +73,9 @@ public class Piece : MonoBehaviour, IPointerClickHandler
         
         coordinates = cell.gridPosition;
     }
+
+    public void DeSelectPiece()
+    {
+        selected = false;
+    }
 }
