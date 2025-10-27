@@ -11,6 +11,8 @@ public class Cell : MonoBehaviour, IPointerClickHandler
 
     public GameObject selectedPiece;
     public CellGeneration cellGeneration;
+    [SerializeField] private AnimationCurve moveCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
 
 
     public void Init(Vector2Int pos)
@@ -74,23 +76,35 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         StartCoroutine(MovePieceSmoothly(selectedPiece, targetPosition));
     }
 
+   
+
     private IEnumerator MovePieceSmoothly(GameObject piece, Vector2 target)
     {
         Vector2 fixedTarget = new Vector2(target.x - 1, target.y - 1);
+        Vector2 startPosition = piece.transform.position;
+        float duration = 0.5f; 
+        float time = 0f;
 
-        while (Vector2.Distance(piece.transform.position, fixedTarget) > 0.01f)
+        while (time < duration)
         {
-            piece.transform.position = Vector2.MoveTowards(
-                piece.transform.position,
-                fixedTarget,
-                5f * Time.deltaTime 
-            );
+            
+            float t = time / duration;
 
-            yield return null; 
+            
+            float curveValue = moveCurve.Evaluate(t);
+
+            
+            piece.transform.position = Vector2.Lerp(startPosition, fixedTarget, curveValue);
+
+           
+            time += Time.deltaTime;
+
+            yield return null;
         }
 
         
         piece.transform.position = fixedTarget;
     }
+
 
 }

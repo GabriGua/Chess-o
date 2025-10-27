@@ -136,9 +136,46 @@ public class CellGeneration : MonoBehaviour
                     break;
 
                 case PieceType.Queen:
+                    Vector2Int[] directionsQ = {
+                        new Vector2Int(1, 1),
+                        new Vector2Int(-1, -1),
+                        new Vector2Int(1, -1),
+                        new Vector2Int(-1, 1),
+                        new Vector2Int(0, 1),
+                        new Vector2Int(0, -1),
+                        new Vector2Int(1, 0),
+                        new Vector2Int(-1, 0)
+                    };
+
+                    foreach (Vector2Int dir in directionsQ)
+                    {
+                        for (int step = 1; step < width; step++)
+                        {
+                            int newX = x + dir.x * step;
+                            int newY = y + dir.y * step;
+
+
+                            if (newX < 0 || newX >= width || newY < 0 || newY >= height)
+                                break;
+
+                            var cell = arrayCell[newX, newY].GetComponent<Cell>();
+
+                            if (!cell.occupiedCell)
+                            {
+                                spriteRenderer = arrayCell[newX, newY].GetComponent<SpriteRenderer>();
+                                cell.FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
+                                spriteRenderer.sprite = data.isGreen ? green : pink;
+                            }
+                            else
+                            {
+
+                                break;
+                            }
+                        }
+                    }
+                    break;
 
                     
-                    break;
 
                 case PieceType.Pawn:
                     
@@ -206,115 +243,118 @@ public class CellGeneration : MonoBehaviour
 
                         break;
                 case PieceType.Knight:
+                    Vector2Int[] directionsK = {
+                        new Vector2Int(2, -1),
+                        new Vector2Int(2, 1),
+                        new Vector2Int(1, 2),
+                        new Vector2Int(-1, 2),
+                        new Vector2Int(-2, 1),
+                        new Vector2Int(-2, -1),
+                        new Vector2Int(1, -2),
+                        new Vector2Int(-1, -2)
+                    };
+
+                    foreach (Vector2Int dir in directionsK)
+                    {
+                        
+                            int newX = x + dir.x;
+                            int newY = y + dir.y;
+
+
+                            if (newX < 0 || newX >= width || newY < 0 || newY >= height)
+                               continue;
+
+                            var cell = arrayCell[newX, newY].GetComponent<Cell>();
+
+                            if (!cell.occupiedCell)
+                            {
+                                spriteRenderer = arrayCell[newX, newY].GetComponent<SpriteRenderer>();
+                                cell.FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
+                                spriteRenderer.sprite = data.isGreen ? green : pink;
+                            }
+                            
+                        
+                    }
+                    break;
+
+
+
 
                     break;
                 case PieceType.Bishop:
-                    for (int i = 0; i < 2; i++)
+
+                    Vector2Int[] directionsB = {
+                        new Vector2Int(1, 1),   
+                        new Vector2Int(-1, -1),  
+                        new Vector2Int(1, -1),   
+                        new Vector2Int(-1, 1)   
+                    };
+
+                    foreach (Vector2Int dir in directionsB)
                     {
-
-                        for (int j = 0; j < width; j++)
+                        for (int step = 1; step < width; step++)
                         {
+                            int newX = x + dir.x * step;
+                            int newY = y + dir.y * step;
 
 
+                            if (newX < 0 || newX >= width || newY < 0 || newY >= height)
+                                break;
 
-                            //border chessboard check
-                            int checkX = x + j;
-                            int checkY = y + j;
+                            var cell = arrayCell[newX, newY].GetComponent<Cell>();
 
-                            if (checkX >= 0 && checkX < width && checkY >= 0 && checkY < height)
+                            if (!cell.occupiedCell)
                             {
-                                if (arrayCell[x + j, y + j].GetComponent<Cell>().occupiedCell == false)
-                                {
-                                    spriteRenderer = arrayCell[x + j, y + j].GetComponent<SpriteRenderer>();
-                                    arrayCell[x + j, y + j].GetComponent<Cell>().FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
-                                    if (data.isGreen)
-                                    {
-                                        spriteRenderer.sprite = green;
-                                    }
-                                    else
-                                    {
-                                        spriteRenderer.sprite = pink;
-                                    }
-                                }
-                            }
-
-
-
-
-
-
-
-                        }
-
-                    }
-                    break;
-                case PieceType.Rook:
-                    
-
-                    for (int i = 0; i < 2; i++)
-                    {
-
-                        for (int j = 0; j < width; j++)
-                        {
-
-                            
-
-                            if(i == 0)
-                            {//border chessboard check
-                            int checkX = x + j;
-                            int checkY = y + j;
-
-                                if (checkX >= 0 && checkX < width && checkY >= 0 && checkY < height)
-                                {
-                                    if (arrayCell[x, j].GetComponent<Cell>().occupiedCell == false)
-                                    {
-                                        spriteRenderer = arrayCell[x,  j].GetComponent<SpriteRenderer>();
-                                        arrayCell[x, j].GetComponent<Cell>().FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
-                                        if (data.isGreen)
-                                        {
-                                            spriteRenderer.sprite = green;
-                                        }
-                                        else
-                                        {
-                                            spriteRenderer.sprite = pink;
-                                        }
-                                    }
-                                }
+                                spriteRenderer = arrayCell[newX, newY].GetComponent<SpriteRenderer>();
+                                cell.FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
+                                spriteRenderer.sprite = data.isGreen ? green : pink;
                             }
                             else
                             {
-                                //border chessboard check
-                                int checkX = x + j;
-                                int checkY = y + j;
 
-                                if (checkX >= 0 && checkX < width && checkY >= 0 && checkY < height)
-                                {
-                                    if (arrayCell[j, y ].GetComponent<Cell>().occupiedCell == false)
-                                    {
-                                        spriteRenderer = arrayCell[j, y ].GetComponent<SpriteRenderer>();
-                                        arrayCell[j, y ].GetComponent<Cell>().FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
-                                        if (data.isGreen)
-                                        {
-                                            spriteRenderer.sprite = green;
-                                        }
-                                        else
-                                        {
-                                            spriteRenderer.sprite = pink;
-                                        }
-                                    }
-                                }
+                                break;
                             }
-                            
-                            
-
-
-                            
-
-
-
-                            
                         }
-                        
+                    }
+                    break;
+                    
+                case PieceType.Rook:
+
+
+                
+                    
+                    Vector2Int[] directions = {
+                        new Vector2Int(0, 1),   
+                        new Vector2Int(0, -1),  
+                        new Vector2Int(1, 0),   
+                        new Vector2Int(-1, 0)   
+                    };
+
+                    foreach (Vector2Int dir in directions)
+                    {
+                        for (int step = 1; step < width; step++)
+                        {
+                            int newX = x + dir.x * step;
+                            int newY = y + dir.y * step;
+
+                            
+                            if (newX < 0 || newX >= width || newY < 0 || newY >= height)
+                                break;
+
+                            var cell = arrayCell[newX, newY].GetComponent<Cell>();
+
+                            if (!cell.occupiedCell)
+                            {
+                                spriteRenderer = arrayCell[newX, newY].GetComponent<SpriteRenderer>();
+                                cell.FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
+                                spriteRenderer.sprite = data.isGreen ? green : pink;
+                            }
+                            else
+                            {
+                                
+                                break;
+                            }
+                        }
                     }
                     break;
                 default:
