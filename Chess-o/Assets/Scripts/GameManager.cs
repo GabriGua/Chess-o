@@ -2,18 +2,38 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject[] gamePieces;
+    
+    bool isGreenTurn = true;
 
-    [SerializeField] GameObject[] Pos;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        
+        foreach (var gamePiece in gamePieces)
+        {
+            gamePiece.GetComponent<Piece>().TurnSystem(isGreenTurn, gameObject.GetComponent<GameManager>());
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+   
+
+    public void SwitchTurn()
     {
-        
+        if (isGreenTurn)
+        {
+            isGreenTurn = false;
+        }
+        else
+        {
+            isGreenTurn = true;
+        }
+
+        foreach (var gamePiece in gamePieces)
+        {
+            gamePiece.GetComponent<Piece>().TurnSystem(isGreenTurn, gameObject.GetComponent<GameManager>());
+        }
     }
+
+
+    
+
 }

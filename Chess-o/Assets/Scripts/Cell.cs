@@ -13,7 +13,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     public CellGeneration cellGeneration;
     [SerializeField] private AnimationCurve moveCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
-
+    GameManager gameManager;
 
     public void Init(Vector2Int pos)
     {
@@ -59,18 +59,32 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         selectedPiece = piece;
         cellGeneration = cellGen;
 
+        if (pieceInCell != null)
+        {
+            pieceInCell.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(selectedPiece.GetComponent<Piece>().selected == true)
+        {
+            gameManager.SwitchTurn();
+            MovePieceToCell(selectedPiece, gameObject.transform.position);
+
+        }
         
-        MovePieceToCell(selectedPiece, gameObject.transform.position);
     }
     public void MovePieceToCell(GameObject selectedPiece, Vector2 targetPosition)
     {
         if(cellGeneration != null)
         {
             cellGeneration.ResetBoard();
+            if (pieceInCell != null)
+            {
+                pieceInCell.GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
         selectedPiece.GetComponent<Piece>().DeSelectPiece();
         StartCoroutine(MovePieceSmoothly(selectedPiece, targetPosition));
@@ -106,5 +120,9 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         piece.transform.position = fixedTarget;
     }
 
+    public void SetGameManager(GameManager gameM)
+    {
+        gameManager = gameM;
+    }
 
 }

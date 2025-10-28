@@ -267,6 +267,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &53695687
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -555,6 +556,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &70008639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -764,6 +766,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &77564917
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -973,6 +976,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &81118556
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1249,6 +1253,7 @@ MonoBehaviour:
   cellPrefab: {fileID: 8221190881985867034, guid: 819df870edaf69048a3781fd91cf6119, type: 3}
   pink: {fileID: 21300000, guid: 6adcf19e1c9f07f43999fbddd21a522a, type: 3}
   green: {fileID: 21300000, guid: 89e7dde72fd220f4b8eb1370a802ade9, type: 3}
+  gameManager: {fileID: 1216634913}
 --- !u!1 &399589023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,6 +1373,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!212 &455955742
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1635,6 +1641,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &461762084
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1998,6 +2005,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &528045819
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2149,6 +2157,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!212 &551279748
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2442,6 +2451,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!212 &687764723
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2709,6 +2719,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &735960799
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2918,6 +2929,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &740323294
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3127,6 +3139,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &818143600
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3369,6 +3382,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &852562483
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3578,6 +3592,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &969027773
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3787,6 +3802,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &975035049
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3938,6 +3954,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!212 &1177818417
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4147,6 +4164,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!212 &1184899284
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4332,7 +4350,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6422bd24e013444984f509b9209b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  Pos: []
+  gamePieces:
+  - {fileID: 1817049933}
+  - {fileID: 687764720}
+  - {fileID: 1184899281}
+  - {fileID: 551279745}
+  - {fileID: 1370476066}
+  - {fileID: 1335112841}
+  - {fileID: 1177818414}
+  - {fileID: 455955739}
+  - {fileID: 1560001445}
+  - {fileID: 461762080}
+  - {fileID: 70008635}
+  - {fileID: 1345633911}
+  - {fileID: 1254207242}
+  - {fileID: 2053864028}
+  - {fileID: 740323290}
+  - {fileID: 2142985005}
+  - {fileID: 1356601563}
+  - {fileID: 2025040012}
+  - {fileID: 1382439069}
+  - {fileID: 818143596}
+  - {fileID: 969027769}
+  - {fileID: 81118552}
+  - {fileID: 1564991489}
+  - {fileID: 1740490419}
+  - {fileID: 1871112012}
+  - {fileID: 975035045}
+  - {fileID: 735960795}
+  - {fileID: 852562479}
+  - {fileID: 528045815}
+  - {fileID: 1342415157}
+  - {fileID: 53695683}
+  - {fileID: 77564913}
 --- !u!4 &1216634914
 Transform:
   m_ObjectHideFlags: 0
@@ -4459,6 +4509,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &1254207246
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4610,6 +4661,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!212 &1335112844
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4877,6 +4929,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &1342415161
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5086,6 +5139,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &1345633915
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5295,6 +5349,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &1356601567
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5446,6 +5501,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!212 &1370476069
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5713,6 +5769,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &1382439073
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5988,6 +6045,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!114 &1560001449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6201,6 +6259,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &1564991493
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6449,6 +6508,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &1740490423
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6658,6 +6718,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &1817049937
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6871,6 +6932,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &1871112016
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7117,6 +7179,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &2025040016
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7326,6 +7389,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &2053864032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7535,6 +7599,7 @@ MonoBehaviour:
   cellGeneration: {fileID: 391257427}
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
+  selected: 0
 --- !u!61 &2142985009
 BoxCollider2D:
   m_ObjectHideFlags: 0

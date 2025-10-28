@@ -3,38 +3,44 @@ using UnityEngine.EventSystems;
 
 public class Piece : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField]ChessPieces data;
+    [SerializeField] public ChessPieces data;
     [SerializeField]CellGeneration cellGeneration;
+    GameManager gameManager;
+
 
     private SpriteRenderer spriteRenderer;
     public Vector2Int coordinates;
     public Cell cell;
-    bool selected = false;
+    public bool selected = false;
+    bool canMove = false;
+    bool captured = false;
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = data.Sprite;
     }
 
-    public void MovePieceToGrid()
-    {
-
-    }
 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-
-        if (selected == true)
+        if(canMove)
         {
-            selected = false;
-        }
-        else
-        {
-            selected = true;
-        }
+            if (selected == true)
+            {
+                selected = false;
+            }
+            else
+            {
+                selected = true;
+            }
 
             cellGeneration.UpdatePossibleMoves(data, coordinates, selected, gameObject);
+
+            
+        }
+        
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -77,5 +83,23 @@ public class Piece : MonoBehaviour, IPointerClickHandler
     public void DeSelectPiece()
     {
         selected = false;
+    }
+
+    public void TurnSystem(bool greenTurn, GameManager gameM)
+    {
+
+        if (gameManager == null)
+        {
+            gameManager = gameM;
+        }
+
+        if (greenTurn == data.isGreen)
+        {
+            canMove = true;
+        }
+        else
+        {
+            canMove = false;
+        }
     }
 }
