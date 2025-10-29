@@ -33,7 +33,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ResetPieceCollider()
+    {
+        foreach(var gamePiece in gamePieces)
+        {
+            if(gamePiece.GetComponent<Piece>().captured == false)
+            {
+                gamePiece.GetComponent<BoxCollider2D>().enabled = true;
 
-    
+            }
+            
+        }
+    }
+
+
 
 }

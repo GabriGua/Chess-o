@@ -12,8 +12,10 @@ public class Piece : MonoBehaviour, IPointerClickHandler
     public Vector2Int coordinates;
     public Cell cell;
     public bool selected = false;
-    bool canMove = false;
-    bool captured = false;
+    [SerializeField]bool canMove = false;
+    public bool captured = false;
+
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -95,11 +97,20 @@ public class Piece : MonoBehaviour, IPointerClickHandler
 
         if (greenTurn == data.isGreen)
         {
+            
             canMove = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
         else
         {
             canMove = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
+    }
+
+    public void IsCaptured()
+    {
+        captured = true;
+        gameObject.SetActive(false);
     }
 }

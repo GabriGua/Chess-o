@@ -170,7 +170,6 @@ GameObject:
   - component: {fileID: 53695687}
   - component: {fileID: 53695688}
   - component: {fileID: 53695690}
-  - component: {fileID: 53695689}
   m_Layer: 0
   m_Name: Queen
   m_TagString: piece
@@ -268,6 +267,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &53695687
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -327,18 +328,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &53695689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 53695683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &53695690
 Rigidbody2D:
   serializedVersion: 5
@@ -459,7 +448,6 @@ GameObject:
   - component: {fileID: 70008639}
   - component: {fileID: 70008640}
   - component: {fileID: 70008642}
-  - component: {fileID: 70008641}
   m_Layer: 0
   m_Name: Knight
   m_TagString: piece
@@ -557,6 +545,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &70008639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -616,18 +606,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &70008641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70008635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &70008642
 Rigidbody2D:
   serializedVersion: 5
@@ -669,7 +647,6 @@ GameObject:
   - component: {fileID: 77564917}
   - component: {fileID: 77564918}
   - component: {fileID: 77564920}
-  - component: {fileID: 77564919}
   m_Layer: 0
   m_Name: King
   m_TagString: piece
@@ -767,6 +744,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &77564917
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -826,18 +805,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &77564919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77564913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &77564920
 Rigidbody2D:
   serializedVersion: 5
@@ -879,7 +846,6 @@ GameObject:
   - component: {fileID: 81118556}
   - component: {fileID: 81118557}
   - component: {fileID: 81118559}
-  - component: {fileID: 81118558}
   m_Layer: 0
   m_Name: Pawn (5)
   m_TagString: piece
@@ -977,6 +943,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &81118556
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1036,18 +1004,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &81118558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81118552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &81118559
 Rigidbody2D:
   serializedVersion: 5
@@ -1334,7 +1290,6 @@ GameObject:
   - component: {fileID: 455955743}
   - component: {fileID: 455955744}
   - component: {fileID: 455955746}
-  - component: {fileID: 455955745}
   m_Layer: 0
   m_Name: Pawn (7)
   m_TagString: piece
@@ -1374,6 +1329,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!212 &455955742
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1491,18 +1448,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &455955745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455955739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &455955746
 Rigidbody2D:
   serializedVersion: 5
@@ -1544,7 +1489,6 @@ GameObject:
   - component: {fileID: 461762084}
   - component: {fileID: 461762085}
   - component: {fileID: 461762087}
-  - component: {fileID: 461762086}
   m_Layer: 0
   m_Name: Rook (1)
   m_TagString: piece
@@ -1642,6 +1586,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &461762084
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1701,18 +1647,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &461762086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461762080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &461762087
 Rigidbody2D:
   serializedVersion: 5
@@ -1908,7 +1842,6 @@ GameObject:
   - component: {fileID: 528045819}
   - component: {fileID: 528045820}
   - component: {fileID: 528045822}
-  - component: {fileID: 528045821}
   m_Layer: 0
   m_Name: Bishop
   m_TagString: piece
@@ -2006,6 +1939,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &528045819
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2065,18 +2000,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &528045821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528045815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &528045822
 Rigidbody2D:
   serializedVersion: 5
@@ -2118,7 +2041,6 @@ GameObject:
   - component: {fileID: 551279749}
   - component: {fileID: 551279750}
   - component: {fileID: 551279752}
-  - component: {fileID: 551279751}
   m_Layer: 0
   m_Name: Pawn (3)
   m_TagString: piece
@@ -2158,6 +2080,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!212 &551279748
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2275,18 +2199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &551279751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 551279745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &551279752
 Rigidbody2D:
   serializedVersion: 5
@@ -2412,7 +2324,6 @@ GameObject:
   - component: {fileID: 687764724}
   - component: {fileID: 687764725}
   - component: {fileID: 687764727}
-  - component: {fileID: 687764726}
   m_Layer: 0
   m_Name: Pawn (1)
   m_TagString: piece
@@ -2452,6 +2363,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!212 &687764723
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2569,18 +2482,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &687764726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 687764720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &687764727
 Rigidbody2D:
   serializedVersion: 5
@@ -2622,7 +2523,6 @@ GameObject:
   - component: {fileID: 735960799}
   - component: {fileID: 735960800}
   - component: {fileID: 735960802}
-  - component: {fileID: 735960801}
   m_Layer: 0
   m_Name: Knight
   m_TagString: piece
@@ -2720,6 +2620,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &735960799
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2779,18 +2681,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &735960801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735960795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &735960802
 Rigidbody2D:
   serializedVersion: 5
@@ -2832,7 +2722,6 @@ GameObject:
   - component: {fileID: 740323294}
   - component: {fileID: 740323295}
   - component: {fileID: 740323297}
-  - component: {fileID: 740323296}
   m_Layer: 0
   m_Name: Queen
   m_TagString: piece
@@ -2930,6 +2819,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &740323294
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2989,18 +2880,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &740323296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 740323290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &740323297
 Rigidbody2D:
   serializedVersion: 5
@@ -3042,7 +2921,6 @@ GameObject:
   - component: {fileID: 818143600}
   - component: {fileID: 818143601}
   - component: {fileID: 818143603}
-  - component: {fileID: 818143602}
   m_Layer: 0
   m_Name: Pawn (3)
   m_TagString: piece
@@ -3140,6 +3018,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &818143600
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3199,18 +3079,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &818143602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 818143596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &818143603
 Rigidbody2D:
   serializedVersion: 5
@@ -3285,7 +3153,6 @@ GameObject:
   - component: {fileID: 852562483}
   - component: {fileID: 852562484}
   - component: {fileID: 852562486}
-  - component: {fileID: 852562485}
   m_Layer: 0
   m_Name: Knight1
   m_TagString: piece
@@ -3383,6 +3250,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &852562483
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3442,18 +3311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &852562485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 852562479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &852562486
 Rigidbody2D:
   serializedVersion: 5
@@ -3495,7 +3352,6 @@ GameObject:
   - component: {fileID: 969027773}
   - component: {fileID: 969027774}
   - component: {fileID: 969027776}
-  - component: {fileID: 969027775}
   m_Layer: 0
   m_Name: Pawn (4)
   m_TagString: piece
@@ -3593,6 +3449,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &969027773
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3652,18 +3510,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &969027775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969027769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &969027776
 Rigidbody2D:
   serializedVersion: 5
@@ -3704,7 +3550,6 @@ GameObject:
   - component: {fileID: 975035048}
   - component: {fileID: 975035049}
   - component: {fileID: 975035050}
-  - component: {fileID: 975035051}
   - component: {fileID: 975035052}
   m_Layer: 0
   m_Name: Rook1
@@ -3803,6 +3648,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &975035049
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3837,7 +3684,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.98552036, y: 0.99276024}
+  m_Offset: {x: 1, y: 1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3862,18 +3709,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &975035051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975035045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &975035052
 Rigidbody2D:
   serializedVersion: 5
@@ -3915,7 +3750,6 @@ GameObject:
   - component: {fileID: 1177818418}
   - component: {fileID: 1177818419}
   - component: {fileID: 1177818421}
-  - component: {fileID: 1177818420}
   m_Layer: 0
   m_Name: Pawn (6)
   m_TagString: piece
@@ -3955,6 +3789,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!212 &1177818417
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4072,18 +3908,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &1177818420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1177818414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &1177818421
 Rigidbody2D:
   serializedVersion: 5
@@ -4125,7 +3949,6 @@ GameObject:
   - component: {fileID: 1184899285}
   - component: {fileID: 1184899286}
   - component: {fileID: 1184899288}
-  - component: {fileID: 1184899287}
   m_Layer: 0
   m_Name: Pawn (2)
   m_TagString: piece
@@ -4165,6 +3988,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!212 &1184899284
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4282,18 +4107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &1184899287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184899281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &1184899288
 Rigidbody2D:
   serializedVersion: 5
@@ -4412,7 +4225,6 @@ GameObject:
   - component: {fileID: 1254207246}
   - component: {fileID: 1254207247}
   - component: {fileID: 1254207249}
-  - component: {fileID: 1254207248}
   m_Layer: 0
   m_Name: Bishop
   m_TagString: piece
@@ -4510,6 +4322,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &1254207246
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4569,18 +4383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &1254207248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1254207242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &1254207249
 Rigidbody2D:
   serializedVersion: 5
@@ -4622,7 +4424,6 @@ GameObject:
   - component: {fileID: 1335112845}
   - component: {fileID: 1335112846}
   - component: {fileID: 1335112848}
-  - component: {fileID: 1335112847}
   m_Layer: 0
   m_Name: Pawn (5)
   m_TagString: piece
@@ -4662,6 +4463,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!212 &1335112844
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4779,18 +4582,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &1335112847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1335112841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &1335112848
 Rigidbody2D:
   serializedVersion: 5
@@ -4832,7 +4623,6 @@ GameObject:
   - component: {fileID: 1342415161}
   - component: {fileID: 1342415162}
   - component: {fileID: 1342415164}
-  - component: {fileID: 1342415163}
   m_Layer: 0
   m_Name: Bishop1
   m_TagString: piece
@@ -4930,6 +4720,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &1342415161
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4989,18 +4781,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &1342415163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342415157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &1342415164
 Rigidbody2D:
   serializedVersion: 5
@@ -5042,7 +4822,6 @@ GameObject:
   - component: {fileID: 1345633915}
   - component: {fileID: 1345633916}
   - component: {fileID: 1345633918}
-  - component: {fileID: 1345633917}
   m_Layer: 0
   m_Name: Knight1
   m_TagString: piece
@@ -5140,6 +4919,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &1345633915
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5199,18 +4980,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &1345633917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345633911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &1345633918
 Rigidbody2D:
   serializedVersion: 5
@@ -5252,7 +5021,6 @@ GameObject:
   - component: {fileID: 1356601567}
   - component: {fileID: 1356601568}
   - component: {fileID: 1356601570}
-  - component: {fileID: 1356601569}
   m_Layer: 0
   m_Name: Pawn
   m_TagString: piece
@@ -5350,6 +5118,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &1356601567
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5409,18 +5179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &1356601569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356601563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &1356601570
 Rigidbody2D:
   serializedVersion: 5
@@ -5462,7 +5220,6 @@ GameObject:
   - component: {fileID: 1370476070}
   - component: {fileID: 1370476071}
   - component: {fileID: 1370476073}
-  - component: {fileID: 1370476072}
   m_Layer: 0
   m_Name: Pawn (4)
   m_TagString: piece
@@ -5502,6 +5259,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!212 &1370476069
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5619,18 +5378,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &1370476072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1370476066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &1370476073
 Rigidbody2D:
   serializedVersion: 5
@@ -5672,7 +5419,6 @@ GameObject:
   - component: {fileID: 1382439073}
   - component: {fileID: 1382439074}
   - component: {fileID: 1382439076}
-  - component: {fileID: 1382439075}
   m_Layer: 0
   m_Name: Pawn (2)
   m_TagString: piece
@@ -5770,6 +5516,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &1382439073
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5829,18 +5577,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &1382439075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382439069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &1382439076
 Rigidbody2D:
   serializedVersion: 5
@@ -5948,7 +5684,6 @@ GameObject:
   - component: {fileID: 1560001449}
   - component: {fileID: 1560001450}
   - component: {fileID: 1560001452}
-  - component: {fileID: 1560001451}
   m_Layer: 0
   m_Name: Rook
   m_TagString: piece
@@ -6046,6 +5781,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!114 &1560001449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6109,18 +5846,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1560001451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560001445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &1560001452
 Rigidbody2D:
   serializedVersion: 5
@@ -6162,7 +5887,6 @@ GameObject:
   - component: {fileID: 1564991493}
   - component: {fileID: 1564991494}
   - component: {fileID: 1564991496}
-  - component: {fileID: 1564991495}
   m_Layer: 0
   m_Name: Pawn (6)
   m_TagString: piece
@@ -6260,6 +5984,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &1564991493
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6319,18 +6045,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &1564991495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564991489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &1564991496
 Rigidbody2D:
   serializedVersion: 5
@@ -6411,7 +6125,6 @@ GameObject:
   - component: {fileID: 1740490423}
   - component: {fileID: 1740490424}
   - component: {fileID: 1740490426}
-  - component: {fileID: 1740490425}
   m_Layer: 0
   m_Name: Pawn (7)
   m_TagString: piece
@@ -6509,6 +6222,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &1740490423
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6568,18 +6283,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &1740490425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1740490419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &1740490426
 Rigidbody2D:
   serializedVersion: 5
@@ -6621,7 +6324,6 @@ GameObject:
   - component: {fileID: 1817049937}
   - component: {fileID: 1817049938}
   - component: {fileID: 1817049940}
-  - component: {fileID: 1817049939}
   m_Layer: 0
   m_Name: Pawn
   m_TagString: piece
@@ -6719,6 +6421,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &1817049937
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6777,23 +6481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
---- !u!114 &1817049939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817049933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
+  m_Delegates: []
 --- !u!50 &1817049940
 Rigidbody2D:
   serializedVersion: 5
@@ -6835,7 +6523,6 @@ GameObject:
   - component: {fileID: 1871112016}
   - component: {fileID: 1871112017}
   - component: {fileID: 1871112019}
-  - component: {fileID: 1871112018}
   m_Layer: 0
   m_Name: Rook
   m_TagString: piece
@@ -6933,6 +6620,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &1871112016
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6992,18 +6681,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &1871112018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871112012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &1871112019
 Rigidbody2D:
   serializedVersion: 5
@@ -7082,7 +6759,6 @@ GameObject:
   - component: {fileID: 2025040016}
   - component: {fileID: 2025040017}
   - component: {fileID: 2025040019}
-  - component: {fileID: 2025040018}
   m_Layer: 0
   m_Name: Pawn (1)
   m_TagString: piece
@@ -7180,6 +6856,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &2025040016
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7239,18 +6917,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &2025040018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2025040012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &2025040019
 Rigidbody2D:
   serializedVersion: 5
@@ -7292,7 +6958,6 @@ GameObject:
   - component: {fileID: 2053864032}
   - component: {fileID: 2053864033}
   - component: {fileID: 2053864035}
-  - component: {fileID: 2053864034}
   m_Layer: 0
   m_Name: Bishop (1)
   m_TagString: piece
@@ -7390,6 +7055,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &2053864032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7449,18 +7116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &2053864034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053864028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &2053864035
 Rigidbody2D:
   serializedVersion: 5
@@ -7502,7 +7157,6 @@ GameObject:
   - component: {fileID: 2142985009}
   - component: {fileID: 2142985010}
   - component: {fileID: 2142985012}
-  - component: {fileID: 2142985011}
   m_Layer: 0
   m_Name: King
   m_TagString: piece
@@ -7600,6 +7254,8 @@ MonoBehaviour:
   coordinates: {x: 0, y: 0}
   cell: {fileID: 0}
   selected: 0
+  canMove: 0
+  captured: 0
 --- !u!61 &2142985009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7659,18 +7315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
   m_Delegates: []
---- !u!114 &2142985011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142985005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681f2662394370940909c240cb95e39c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PieceMovement
 --- !u!50 &2142985012
 Rigidbody2D:
   serializedVersion: 5

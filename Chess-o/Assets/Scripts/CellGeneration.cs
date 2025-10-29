@@ -116,7 +116,7 @@ public class CellGeneration : MonoBehaviour
                         }
                         else
                         {
-                            if (cell.pieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen)
+                            if (cell.pieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen || cell.lastPieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen)
                             {
                                 spriteRenderer = arrayCell[newX, newY].GetComponent<SpriteRenderer>();
                                 cell.FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
@@ -166,7 +166,7 @@ public class CellGeneration : MonoBehaviour
                             }
                             else
                             {
-                                if (cell.pieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen)
+                                if (cell.pieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen || cell.lastPieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen)
                                 {
                                     spriteRenderer = arrayCell[newX, newY].GetComponent<SpriteRenderer>();
                                     cell.FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
@@ -253,8 +253,9 @@ public class CellGeneration : MonoBehaviour
 
                         if (canAttackLeft && arrayCell[x - 1, y - 1].GetComponent<Cell>().occupiedCell)
                         {
-                            var targetPiece = arrayCell[x - 1, y - 1].GetComponent<Cell>().pieceInCell.GetComponent<Piece>();
-                            if (targetPiece.data.isGreen != data.isGreen)
+                            var targetPiece = arrayCell[x - 1, y - 1].GetComponent<Cell>().pieceInCell.GetComponent<Piece>(); 
+                            var targetLastPiece = arrayCell[x - 1, y - 1].GetComponent<Cell>().lastPieceInCell.GetComponent<Piece>();
+                            if (targetPiece.data.isGreen != data.isGreen || targetLastPiece.data.isGreen != data.isGreen)
                             {
                                 spriteRenderer = arrayCell[x - 1, y - 1].GetComponent<SpriteRenderer>();
                                 arrayCell[x - 1, y - 1].GetComponent<Cell>().FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
@@ -265,7 +266,8 @@ public class CellGeneration : MonoBehaviour
                         if (canAttackRight && arrayCell[x + 1, y - 1].GetComponent<Cell>().occupiedCell)
                         {
                             var targetPiece = arrayCell[x + 1, y - 1].GetComponent<Cell>().pieceInCell.GetComponent<Piece>();
-                            if (targetPiece.data.isGreen != data.isGreen)
+                            var targetLastPiece = arrayCell[x + 1, y - 1].GetComponent<Cell>().lastPieceInCell.GetComponent<Piece>();
+                            if (targetPiece.data.isGreen != data.isGreen || targetLastPiece.data.isGreen != data.isGreen)
                             {
                                 spriteRenderer = arrayCell[x + 1, y - 1].GetComponent<SpriteRenderer>();
                                 arrayCell[x + 1, y - 1].GetComponent<Cell>().FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
@@ -307,7 +309,7 @@ public class CellGeneration : MonoBehaviour
                             }
                             else
                             {
-                                if (cell.pieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen)
+                                if(cell.pieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen || cell.lastPieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen)
                                 {
                                     spriteRenderer = arrayCell[newX, newY].GetComponent<SpriteRenderer>();
                                     cell.FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
@@ -356,7 +358,7 @@ public class CellGeneration : MonoBehaviour
                             }
                             else
                             {
-                                if (cell.pieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen)
+                                if (cell.pieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen || cell.lastPieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen)
                                 {
                                     spriteRenderer = arrayCell[newX, newY].GetComponent<SpriteRenderer>();
                                     cell.FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
@@ -407,7 +409,7 @@ public class CellGeneration : MonoBehaviour
                             }
                             else
                             {
-                                if(cell.pieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen)
+                                if(cell.pieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen || cell.lastPieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen)
                                 {
                                 spriteRenderer = arrayCell[newX, newY].GetComponent<SpriteRenderer>();
                                 cell.FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());

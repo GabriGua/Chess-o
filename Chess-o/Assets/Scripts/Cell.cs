@@ -7,6 +7,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     public Vector2Int gridPosition;
     public bool occupiedCell;
     public int pieceOverCell;
+    public GameObject lastPieceInCell;
     public GameObject pieceInCell;
 
     public GameObject selectedPiece;
@@ -44,6 +45,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
 
     public void DeoccupyCell()
     {
+        lastPieceInCell = pieceInCell;
         if(pieceOverCell  == 1)
         {
             occupiedCell = false;
@@ -59,10 +61,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         selectedPiece = piece;
         cellGeneration = cellGen;
 
-        if (pieceInCell != null)
-        {
-            pieceInCell.GetComponent<BoxCollider2D>().enabled = false;
-        }
+        
 
     }
 
@@ -70,21 +69,30 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     {
         if(selectedPiece.GetComponent<Piece>().selected == true)
         {
-            gameManager.SwitchTurn();
             MovePieceToCell(selectedPiece, gameObject.transform.position);
+            if (pieceInCell != null)
+            {
+                pieceInCell.GetComponent<Piece>().IsCaptured();
+            }
+            gameManager.SwitchTurn();
+            //gameManager.ResetPieceCollider();
+            
 
         }
         
     }
     public void MovePieceToCell(GameObject selectedPiece, Vector2 targetPosition)
     {
+
         if(cellGeneration != null)
         {
             cellGeneration.ResetBoard();
-            if (pieceInCell != null)
-            {
-                pieceInCell.GetComponent<BoxCollider2D>().enabled = false;
-            }
+            
+        }
+
+        if (pieceInCell != null)
+        {
+            pieceInCell.GetComponent<Piece>().IsCaptured();
         }
         selectedPiece.GetComponent<Piece>().DeSelectPiece();
         StartCoroutine(MovePieceSmoothly(selectedPiece, targetPosition));
