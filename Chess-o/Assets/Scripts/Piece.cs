@@ -60,11 +60,16 @@ public class Piece : MonoBehaviour, IPointerClickHandler
 
             if (collision.gameObject.tag == "piece")
             {
-                if (canMove == false)
+                if(collision.gameObject.GetComponent<Piece>().data.isGreen != data.isGreen)
                 {
+                    if (canMove == false)
+                    {
 
                     collision.gameObject.GetComponent<Piece>().IsCaptured();
+                    }
+
                 }
+                
             }
 
         }

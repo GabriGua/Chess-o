@@ -44,6 +44,24 @@ public class GameManager : MonoBehaviour
             }
             
         }
+
+        foreach (var gamePiece in gamePieces)
+        {
+            if (gamePiece.GetComponent<Piece>().captured == false)
+            {
+                if(gamePiece.GetComponent<SpriteRenderer>().flipY != true)
+                {
+                    gamePiece.GetComponent<SpriteRenderer>().flipY = true;
+
+                }else
+                {
+                    gamePiece.GetComponent<SpriteRenderer>().flipY = false;
+                }
+                
+
+            }
+
+        }
     }
 
 

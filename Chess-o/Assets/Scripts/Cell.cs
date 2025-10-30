@@ -91,7 +91,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
 
     private IEnumerator MovePieceSmoothly(GameObject piece, Vector2 target)
     {
-        Vector2 fixedTarget = new Vector2(target.x - 1, target.y - 1);
+        Vector2 fixedTarget = new Vector2(target.x, target.y);
         Vector2 startPosition = piece.transform.position;
         float duration = 0.5f; 
         float time = 0f;
