@@ -38,7 +38,7 @@ public class Piece : MonoBehaviour, IPointerClickHandler
             }
 
             cellGeneration.UpdatePossibleMoves(data, coordinates, selected, gameObject);
-
+            Debug.Log("Click");
             
         }
         
@@ -56,6 +56,15 @@ public class Piece : MonoBehaviour, IPointerClickHandler
                 coordinates = cell.gridPosition;
                 cell.OccupyCell(gameObject);
                 
+            }
+
+            if (collision.gameObject.tag == "piece")
+            {
+                if (canMove == false)
+                {
+
+                    collision.gameObject.GetComponent<Piece>().IsCaptured();
+                }
             }
 
         }
@@ -99,12 +108,12 @@ public class Piece : MonoBehaviour, IPointerClickHandler
         {
             
             canMove = true;
-            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            
         }
         else
         {
             canMove = false;
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            
         }
     }
 

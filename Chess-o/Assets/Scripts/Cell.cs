@@ -7,7 +7,6 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     public Vector2Int gridPosition;
     public bool occupiedCell;
     public int pieceOverCell;
-    public GameObject lastPieceInCell;
     public GameObject pieceInCell;
 
     public GameObject selectedPiece;
@@ -22,10 +21,6 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         name = $"Cell {pos.x},{pos.y}";
     }
 
-    private void Start()
-    {
-        
-    }
 
    public void OccupyCell(GameObject piece)
     {
@@ -45,7 +40,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
 
     public void DeoccupyCell()
     {
-        lastPieceInCell = pieceInCell;
+        
         if(pieceOverCell  == 1)
         {
             occupiedCell = false;
@@ -70,12 +65,9 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         if(selectedPiece.GetComponent<Piece>().selected == true)
         {
             MovePieceToCell(selectedPiece, gameObject.transform.position);
-            if (pieceInCell != null)
-            {
-                pieceInCell.GetComponent<Piece>().IsCaptured();
-            }
+            
             gameManager.SwitchTurn();
-            //gameManager.ResetPieceCollider();
+            gameManager.ResetPieceCollider();
             
 
         }
@@ -90,10 +82,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
             
         }
 
-        if (pieceInCell != null)
-        {
-            pieceInCell.GetComponent<Piece>().IsCaptured();
-        }
+        
         selectedPiece.GetComponent<Piece>().DeSelectPiece();
         StartCoroutine(MovePieceSmoothly(selectedPiece, targetPosition));
     }
