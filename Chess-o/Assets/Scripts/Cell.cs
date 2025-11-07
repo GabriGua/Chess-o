@@ -14,41 +14,18 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     [SerializeField] private AnimationCurve moveCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
     GameManager gameManager;
-
+    
     public void Init(Vector2Int pos)
     {
         gridPosition = pos;
         name = $"Cell {pos.x},{pos.y}";
     }
 
-
-   public void OccupyCell(GameObject piece)
+    public void PassCellInfo(bool occupation, int pieceCell, GameObject thisPiece)
     {
-        occupiedCell = true;
-        pieceInCell = piece;
-        pieceOverCell++;
-
-
-        if (piece != null)
-        {
-            Piece pieceCS = piece.GetComponent<Piece>();
-            pieceCS.ResetCellOccupation(gameObject.GetComponent<Cell>());
-        }
-        
-
-    }
-
-    public void DeoccupyCell()
-    {
-        
-        if(pieceOverCell  == 1)
-        {
-            occupiedCell = false;
-            pieceInCell = null;
-        }
-
-        pieceOverCell--;
-        
+        occupiedCell = occupation;
+        pieceOverCell = pieceCell;
+        pieceInCell = thisPiece;
     }
 
     public void FindSelectedPiece(GameObject piece, CellGeneration cellGen)

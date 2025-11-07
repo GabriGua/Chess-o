@@ -9,6 +9,7 @@ public class CellGeneration : MonoBehaviour
     int height = 8;
     float cellSize = 2;
     GameObject[,] arrayCell;
+    
 
     [SerializeField] Sprite pink;
     [SerializeField] Sprite green;
@@ -20,6 +21,7 @@ public class CellGeneration : MonoBehaviour
     void Start()
     {
         arrayCell = new GameObject[width, height];
+        
         GenerateBoard();
     }
 
@@ -30,16 +32,15 @@ public class CellGeneration : MonoBehaviour
             for(int j = 0; j < height; j++)
             {
                 GameObject newCell = Instantiate(cellPrefab, transform);
+                GameObject childCell = newCell.transform.GetChild(0).gameObject;
                 newCell.transform.position = new Vector3(i * cellSize, j * cellSize, 0);
                 newCell.GetComponent<Cell>().Init(new Vector2Int(i, j));
+                childCell.GetComponent<PositionCell>().Init(new Vector2Int(i, j));
                 newCell.GetComponent<Cell>().SetGameManager(gameManager);
-                if(j <= 1 || j >= width -1)
-                {
-                    newCell.GetComponent<Cell>().OccupyCell(null);
-                    newCell.GetComponent<Cell>().pieceOverCell--;
-                    
-                }
+                childCell.GetComponent<PositionCell>().SetGameManager(gameManager);
+                
                 arrayCell[i,j] = newCell;
+                
 
             }
         }
@@ -63,7 +64,7 @@ public class CellGeneration : MonoBehaviour
     public void UpdatePossibleMoves(ChessPieces data, Vector2Int coordinates, bool selected, GameObject currentPiece)
     {
         selectedPiece = currentPiece;
-        Debug.Log(selectedPiece);
+        
         int x = coordinates.x;
         int y = coordinates.y;
         

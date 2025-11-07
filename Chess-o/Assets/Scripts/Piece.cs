@@ -10,14 +10,17 @@ public class Piece : MonoBehaviour, IPointerClickHandler
 
     private SpriteRenderer spriteRenderer;
     public Vector2Int coordinates;
-    public Cell cell;
+    public PositionCell cell;
     public bool selected = false;
     [SerializeField]bool canMove = false;
     public bool captured = false;
 
 
+    PositionPiece positionPiece;
+
     void Awake()
     {
+        positionPiece = GetComponentInChildren<PositionPiece>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = data.Sprite;
     }
@@ -52,25 +55,13 @@ public class Piece : MonoBehaviour, IPointerClickHandler
             if (collision.gameObject.tag == "cell")
             {
                 
-                cell = collision.GetComponent<Cell>();
+                cell = collision.GetComponentInChildren<PositionCell>();
                 coordinates = cell.gridPosition;
                 cell.OccupyCell(gameObject);
                 
             }
 
-            if (collision.gameObject.tag == "piece")
-            {
-                if(collision.gameObject.GetComponent<Piece>().data.isGreen != data.isGreen)
-                {
-                    if (canMove == false)
-                    {
-
-                    collision.gameObject.GetComponent<Piece>().IsCaptured();
-                    }
-
-                }
-                
-            }
+            
 
         }
     }
@@ -82,15 +73,15 @@ public class Piece : MonoBehaviour, IPointerClickHandler
             if (collision.gameObject.tag == "cell")
             {
                 
-                cell = collision.GetComponent<Cell>();
-                
+                cell = collision.GetComponentInChildren<PositionCell>();
+
                 cell.DeoccupyCell();
             }
 
         }
     }
 
-    public void ResetCellOccupation(Cell cell)
+    public void ResetCellOccupation(PositionCell cell)
     {
         
         coordinates = cell.gridPosition;
@@ -113,12 +104,13 @@ public class Piece : MonoBehaviour, IPointerClickHandler
         {
             
             canMove = true;
+            positionPiece.GetPieceData(data,canMove);
             
         }
         else
         {
             canMove = false;
-            
+            positionPiece.GetPieceData(data, canMove);
         }
     }
 
