@@ -353,3 +353,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  canGreenKing: 0
+  canPinkKing: 0
+  green: {fileID: 21300000, guid: 89e7dde72fd220f4b8eb1370a802ade9, type: 3}
+  pink: {fileID: 21300000, guid: 6adcf19e1c9f07f43999fbddd21a522a, type: 3}
+  cyan: {fileID: 21300000, guid: 34db88396d2efed4b945504e40b68ef1, type: 3}

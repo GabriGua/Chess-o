@@ -12,9 +12,22 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     public GameObject selectedPiece;
     public CellGeneration cellGeneration;
     [SerializeField] private AnimationCurve moveCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+    public bool canGreenKing;
+    public bool canPinkKing;
+
+
+    [SerializeField] Sprite green;
+    [SerializeField] Sprite pink;
+    [SerializeField] Sprite cyan;
 
     GameManager gameManager;
-    
+    SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+    }
+
     public void Init(Vector2Int pos)
     {
         gridPosition = pos;
@@ -53,7 +66,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     public void MovePieceToCell(GameObject selectedPiece, Vector2 targetPosition)
     {
 
-        if(cellGeneration != null)
+       if(cellGeneration != null)
         {
             cellGeneration.ResetBoard();
             
@@ -92,6 +105,11 @@ public class Cell : MonoBehaviour, IPointerClickHandler
 
         
         piece.transform.position = fixedTarget;
+        if (cellGeneration != null)
+        {
+            cellGeneration.ShowAllPossibleMoves();
+
+        }
     }
 
     public void SetGameManager(GameManager gameM)
@@ -99,4 +117,34 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         gameManager = gameM;
     }
 
+    public void ResetKingPass()
+    {
+       
+            canGreenKing = true;
+        
+            canPinkKing = true;
+            spriteRenderer.sprite = null;
+        
+    }
+
+    public void CantKingPass(bool isGreen)
+    {
+        if (isGreen == false)
+        {
+            canGreenKing = false;
+            spriteRenderer.sprite = green;
+        }
+        else
+        {
+
+            canPinkKing = false;
+            spriteRenderer.sprite = pink;
+        }
+
+        if(canGreenKing == false && canPinkKing == false)
+        {
+            spriteRenderer.sprite = cyan;
+            spriteRenderer.sortingOrder = 10;
+        }
+    }
 }
