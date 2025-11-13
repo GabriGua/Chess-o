@@ -18,6 +18,8 @@ public class Piece : MonoBehaviour, IPointerClickHandler
 
     PositionPiece positionPiece;
 
+    Transform theKillPos;
+
     void Awake()
     {
         positionPiece = GetComponentInChildren<PositionPiece>();
@@ -25,7 +27,12 @@ public class Piece : MonoBehaviour, IPointerClickHandler
         spriteRenderer.sprite = data.Sprite;
     }
 
-
+    public void GetKillTransform(Transform killPos)
+    {
+        
+            theKillPos = killPos;
+        
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -117,6 +124,7 @@ public class Piece : MonoBehaviour, IPointerClickHandler
     public void IsCaptured()
     {
         captured = true;
-        gameObject.SetActive(false);
+        gameObject.transform.position = theKillPos.position;
+        coordinates = new Vector2Int(0, -1);
     }
 }

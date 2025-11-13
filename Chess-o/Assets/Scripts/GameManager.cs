@@ -4,7 +4,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] gamePieces;
-    
+
+    [SerializeField] GameObject killPosGreen;
+    [SerializeField] GameObject killPosPink;
+
     bool isGreenTurn = true;
 
     private void Start()
@@ -12,6 +15,16 @@ public class GameManager : MonoBehaviour
         foreach (var gamePiece in gamePieces)
         {
             gamePiece.GetComponent<Piece>().TurnSystem(isGreenTurn, gameObject.GetComponent<GameManager>());
+            if (gamePiece.GetComponent<Piece>().data.isGreen == true)
+            {
+                gamePiece.GetComponent<Piece>().GetKillTransform(killPosGreen.transform);
+
+            }
+            else
+            {
+                gamePiece.GetComponent<Piece>().GetKillTransform(killPosPink.transform);
+            }
+            
         }
     }
 
@@ -378,6 +391,7 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
+       
     }
 
 

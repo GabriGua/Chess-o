@@ -132,19 +132,20 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         if (isGreen == false)
         {
             canGreenKing = false;
-            spriteRenderer.sprite = green;
+            
+            //spriteRenderer.sprite = green;
         }
         else
         {
 
             canPinkKing = false;
-            spriteRenderer.sprite = pink;
+            //spriteRenderer.sprite = pink;
         }
 
         if(canGreenKing == false && canPinkKing == false)
         {
-            spriteRenderer.sprite = cyan;
-            spriteRenderer.sortingOrder = 10;
+            //spriteRenderer.sprite = cyan;
+            //spriteRenderer.sortingOrder = 10;
         }
     }
 }

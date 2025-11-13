@@ -138,11 +138,13 @@ public class CellGeneration : MonoBehaviour
                             {
                                 if (cell.pieceInCell.GetComponent<Piece>().data.isGreen != data.isGreen)
                                 {
-                                    spriteRenderer = arrayCell[newX, newY].GetComponent<SpriteRenderer>();
-                                    cell.FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
-                                    spriteRenderer.sprite = data.isGreen ? green : pink;
-                                    spriteRenderer.sortingOrder = 10;
-
+                                    if ((data.isGreen == true && cell.canGreenKing == data.isGreen) || (data.isGreen == false && cell.canPinkKing != data.isGreen))
+                                    {
+                                        spriteRenderer = arrayCell[newX, newY].GetComponent<SpriteRenderer>();
+                                        cell.FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
+                                        spriteRenderer.sprite = data.isGreen ? green : pink;
+                                        spriteRenderer.sortingOrder = 10;
+                                    }
                                 }
 
 
