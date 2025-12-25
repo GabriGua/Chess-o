@@ -34,7 +34,7 @@ public class Piece : MonoBehaviour, IPointerClickHandler
         
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+     public void OnPointerClick(PointerEventData eventData)
     {
         if(canMove)
         {
@@ -123,8 +123,10 @@ public class Piece : MonoBehaviour, IPointerClickHandler
 
     public void IsCaptured()
     {
+        
         captured = true;
         gameObject.transform.position = theKillPos.position;
+        theKillPos.position += new Vector3(1f, 0);
         coordinates = new Vector2Int(0, -1);
     }
 }

@@ -14,15 +14,16 @@ public class GameManager : MonoBehaviour
     {
         foreach (var gamePiece in gamePieces)
         {
-            gamePiece.GetComponent<Piece>().TurnSystem(isGreenTurn, gameObject.GetComponent<GameManager>());
-            if (gamePiece.GetComponent<Piece>().data.isGreen == true)
+            var pieceScript = gamePiece.GetComponent<Piece>();
+            pieceScript.TurnSystem(isGreenTurn, gameObject.GetComponent<GameManager>());
+            if (pieceScript.data.isGreen == true)
             {
-                gamePiece.GetComponent<Piece>().GetKillTransform(killPosGreen.transform);
+                pieceScript.GetKillTransform(killPosGreen.transform);
 
             }
             else
             {
-                gamePiece.GetComponent<Piece>().GetKillTransform(killPosPink.transform);
+                pieceScript.GetKillTransform(killPosPink.transform);
             }
             
         }
@@ -43,7 +44,8 @@ public class GameManager : MonoBehaviour
 
         foreach (var gamePiece in gamePieces)
         {
-            gamePiece.GetComponent<Piece>().TurnSystem(isGreenTurn, gameObject.GetComponent<GameManager>());
+            var pieceScript = gamePiece.GetComponent<Piece>();
+            pieceScript.TurnSystem(isGreenTurn, gameObject.GetComponent<GameManager>());
         }
     }
 
@@ -51,7 +53,8 @@ public class GameManager : MonoBehaviour
     {
         foreach(var gamePiece in gamePieces)
         {
-            if(gamePiece.GetComponent<Piece>().captured == false)
+            var pieceScript = gamePiece.GetComponent<Piece>();
+            if (pieceScript.captured == false)
             {
                 gamePiece.GetComponent<BoxCollider2D>().enabled = true;
 
@@ -61,7 +64,8 @@ public class GameManager : MonoBehaviour
 
         foreach (var gamePiece in gamePieces)
         {
-            if (gamePiece.GetComponent<Piece>().captured == false)
+            var pieceScript = gamePiece.GetComponent<Piece>();
+            if (pieceScript.captured == false)
             {
                 if(gamePiece.GetComponent<SpriteRenderer>().flipY != true)
                 {
@@ -86,7 +90,8 @@ public class GameManager : MonoBehaviour
 
         foreach(var cell  in arrayCell)
         {
-            cell.GetComponent<Cell>().ResetKingPass();
+            var cellScript = cell.GetComponent<Cell>();
+            cellScript.ResetKingPass();
         }    
 
         foreach (var gamePiece in gamePieces)
@@ -99,7 +104,7 @@ public class GameManager : MonoBehaviour
             int x = coordinates.x;
             int y = coordinates.y;
 
-            int m;
+            
 
             switch (data.type)
             {
@@ -202,7 +207,8 @@ public class GameManager : MonoBehaviour
 
                 case PieceType.Pawn:
 
-                    m = 1;
+                    
+                    
                     if (data.isGreen)
                     {
                        

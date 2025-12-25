@@ -74,7 +74,7 @@ public class CellGeneration : MonoBehaviour
     {
         selectedPiece = currentPiece;
 
-        
+        Debug.Log("click" + currentPiece);
         
         int x = coordinates.x;
         int y = coordinates.y;
@@ -130,7 +130,7 @@ public class CellGeneration : MonoBehaviour
                                 {
                                     spriteRenderer = arrayCell[newX, newY].GetComponent<SpriteRenderer>();
                                     cell.FindSelectedPiece(selectedPiece, gameObject.GetComponent<CellGeneration>());
-                                    spriteRenderer.sprite = data.isGreen ? green : pink;
+                                    spriteRenderer.sprite = data.isGreen ?  green : pink;
                                     spriteRenderer.sortingOrder = 10;
                                 }
                             }
@@ -150,7 +150,7 @@ public class CellGeneration : MonoBehaviour
 
                             }
                         
-
+                            
                     }
                     break;
 
@@ -350,7 +350,7 @@ public class CellGeneration : MonoBehaviour
                                     spriteRenderer.sprite = data.isGreen ? green : pink;
                                     spriteRenderer.sortingOrder = 10;
 
-                            }
+                                }
                                 
 
                             }
