@@ -33,6 +33,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         gridPosition = pos;
         name = $"Cell {pos.x},{pos.y}";
     }
+    
 
     public void PassCellInfo(bool occupation, int pieceCell, GameObject thisPiece)
     {
@@ -147,5 +148,13 @@ public class Cell : MonoBehaviour, IPointerClickHandler
             spriteRenderer.sprite = cyan;
             
         }
+    }
+
+    public bool isKingCheck(bool isGreen)
+    {
+        if (isGreen)
+            return canGreenKing == false;
+        else
+            return canPinkKing == false;
     }
 }
