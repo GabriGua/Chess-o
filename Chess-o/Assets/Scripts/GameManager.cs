@@ -82,81 +82,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    GameObject GetKing(bool isGreen)
-    {
-        foreach (var gamePiece in gamePieces)
-        {
-            var pieceScript = gamePiece.GetComponent<Piece>();
-
-            if(!pieceScript.captured && pieceScript.data.type == PieceType.King && pieceScript.data.isGreen == isGreen)
-            {
-                return gamePiece;
-            }
-        }
-        return null;
-    }
-
-    bool isKingInCheck(bool isGreen, GameObject[,] arraycell)
-    {
-        AllPossibleMoves(arraycell);
-
-        GameObject king = GetKing(isGreen);
-        if (king == null) return false;
-
-        Vector2Int kingPos = king.GetComponent<Piece>().coordinates;
-        Cell kingCell = arraycell[kingPos.x, kingPos.y].GetComponent<Cell>();
-
-        return kingCell.isKingCheck(isGreen);
-    }
-
-    //simulation
-    public bool IsMoveLegal(GameObject pieceObj, Vector2Int targetPos, GameObject[,] arrayCell)
-    {
-        Piece pieceScript = pieceObj.GetComponent<Piece>();
-
-        Vector2Int originalPos = pieceScript.coordinates;
-
-        PositionCell fromCell = arrayCell[originalPos.x, originalPos.y].GetComponentInChildren<PositionCell>();
-        PositionCell toCell = arrayCell[targetPos.x, targetPos.y].GetComponentInChildren<PositionCell>();
-
-        Debug.Log(targetPos.x + ", " + targetPos.y);
-        Debug.Log(toCell);
-        Debug.Log(fromCell);
-
-        GameObject capturedPiece = null;
-
-        if (toCell.occupiedCell)
-        {
-            capturedPiece = toCell.pieceInCell;
-        }
-
-        fromCell.DeoccupyCell();
-
-
-        toCell.OccupyCell(pieceObj);
-
-        pieceScript.coordinates = targetPos;
-
-        if (capturedPiece != null)
-        {
-            capturedPiece.GetComponent<Piece>().captured = true;
-
-        }
-
-        bool kingInCheck = isKingInCheck(pieceScript.data.isGreen, arrayCell);
-
-        pieceScript.coordinates = originalPos;
-        fromCell.OccupyCell(pieceObj);
-
-        toCell.DeoccupyCell();
-        if (capturedPiece != null)
-        {
-            capturedPiece.GetComponent<Piece>().captured = false;
-            toCell.OccupyCell(capturedPiece);
-        }
-
-        return !kingInCheck;
-    }
 
     public void AllPossibleMoves(GameObject[,] arrayCell)
     {
@@ -188,14 +113,14 @@ public class GameManager : MonoBehaviour
                 case PieceType.King:
 
                     Vector2Int[] directionsKi = {
-                        new(-1, -1),
-                        new(-1, 0),
-                        new(-1, 1),
-                        new(0, -1),
-                        new(0, 1),
-                        new(1, -1),
-                        new(1, 0),
-                        new(1, 1)
+                        new Vector2Int(-1, -1),
+                        new Vector2Int(-1, 0),
+                        new Vector2Int(-1, 1),
+                        new Vector2Int(0, -1),
+                        new Vector2Int(0, 1),
+                        new Vector2Int(1, -1),
+                        new Vector2Int(1, 0),
+                        new Vector2Int(1, 1)
                     };
 
                     foreach (Vector2Int dir in directionsKi)
@@ -233,14 +158,14 @@ public class GameManager : MonoBehaviour
 
                 case PieceType.Queen:
                     Vector2Int[] directionsQ = {
-                        new(1, 1),
-                        new(-1, -1),
-                        new(1, -1),
-                        new(-1, 1),
-                        new(0, 1),
-                        new(0, -1),
-                        new(1, 0),
-                        new(-1, 0)
+                        new Vector2Int(1, 1),
+                        new Vector2Int(-1, -1),
+                        new Vector2Int(1, -1),
+                        new Vector2Int(-1, 1),
+                        new Vector2Int(0, 1),
+                        new Vector2Int(0, -1),
+                        new Vector2Int(1, 0),
+                        new Vector2Int(-1, 0)
                     };
 
                     foreach (Vector2Int dir in directionsQ)
@@ -332,14 +257,14 @@ public class GameManager : MonoBehaviour
                     break;
                 case PieceType.Knight:
                     Vector2Int[] directionsK = {
-                        new(2, -1),
-                        new(2, 1),
-                        new(1, 2),
-                        new(-1, 2),
-                        new(-2, 1),
-                        new(-2, -1),
-                        new(1, -2),
-                        new(-1, -2)
+                        new Vector2Int(2, -1),
+                        new Vector2Int(2, 1),
+                        new Vector2Int(1, 2),
+                        new Vector2Int(-1, 2),
+                        new Vector2Int(-2, 1),
+                        new Vector2Int(-2, -1),
+                        new Vector2Int(1, -2),
+                        new Vector2Int(-1, -2)
                     };
 
                     foreach (Vector2Int dir in directionsK)
@@ -380,10 +305,10 @@ public class GameManager : MonoBehaviour
                 case PieceType.Bishop:
 
                     Vector2Int[] directionsB = {
-                        new(1, 1),
-                        new(-1, -1),
-                        new(1, -1),
-                        new(-1, 1)
+                        new Vector2Int(1, 1),
+                        new Vector2Int(-1, -1),
+                        new Vector2Int(1, -1),
+                        new Vector2Int(-1, 1)
                     };
 
                     foreach (Vector2Int dir in directionsB)
@@ -427,10 +352,10 @@ public class GameManager : MonoBehaviour
 
 
                     Vector2Int[] directions = {
-                        new(0, 1),
-                        new(0, -1),
-                        new(1, 0),
-                        new(-1, 0)
+                        new Vector2Int(0, 1),
+                        new Vector2Int(0, -1),
+                        new Vector2Int(1, 0),
+                        new Vector2Int(-1, 0)
                     };
 
                     foreach (Vector2Int dir in directions)
@@ -474,8 +399,6 @@ public class GameManager : MonoBehaviour
         }
        
     }
-
- 
 
 
 }
