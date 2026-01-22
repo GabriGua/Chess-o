@@ -36,6 +36,7 @@ public class Piece : MonoBehaviour, IPointerClickHandler
 
      public void OnPointerClick(PointerEventData eventData)
     {
+        gameManager.ResetSelectedPiece();
         if(canMove)
         {
             if (selected == true)

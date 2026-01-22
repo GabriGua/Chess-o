@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     bool isGreenTurn = true;
 
+    [SerializeField] DebugSettings debugSettings;
+
     private void Start()
     {
         foreach (var gamePiece in gamePieces)
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
    
 
     public void SwitchTurn()
@@ -47,6 +50,8 @@ public class GameManager : MonoBehaviour
             var pieceScript = gamePiece.GetComponent<Piece>();
             pieceScript.TurnSystem(isGreenTurn, gameObject.GetComponent<GameManager>());
         }
+
+        debugSettings.UpdateDebug();
     }
 
     public void ResetPieceCollider()
@@ -400,5 +405,15 @@ public class GameManager : MonoBehaviour
        
     }
 
+
+    public void ResetSelectedPiece()
+    {
+        foreach (var gamePiece in gamePieces)
+        {
+            Piece piece = gamePiece.GetComponent<Piece>();
+
+            piece.DeSelectPiece();
+        }
+    }
 
 }
