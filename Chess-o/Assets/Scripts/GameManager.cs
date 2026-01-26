@@ -1,4 +1,5 @@
 using System.Net.NetworkInformation;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,12 +9,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject killPosGreen;
     [SerializeField] GameObject killPosPink;
 
+    int greenPiece = 16;
+    int pinkPiece = 16;
+
     bool isGreenTurn = true;
 
     [SerializeField] DebugSettings debugSettings;
 
+    [SerializeField] GameObject restartButton;
+    [SerializeField] GameObject winnerText;
+    [SerializeField]TextMeshProUGUI winner;
     private void Start()
     {
+        
         foreach (var gamePiece in gamePieces)
         {
             var pieceScript = gamePiece.GetComponent<Piece>();
@@ -31,7 +39,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+
+
+    public void ActivateDebugSelection()
+    {
+        debugSettings.UpdateDebug();
+    }
    
 
     public void SwitchTurn()
@@ -51,7 +64,7 @@ public class GameManager : MonoBehaviour
             pieceScript.TurnSystem(isGreenTurn, gameObject.GetComponent<GameManager>());
         }
 
-        debugSettings.UpdateDebug();
+        
     }
 
     public void ResetPieceCollider()
@@ -413,6 +426,30 @@ public class GameManager : MonoBehaviour
             Piece piece = gamePiece.GetComponent<Piece>();
 
             piece.DeSelectPiece();
+        }
+    }
+
+    public void UpdateGreenPiece()
+    {
+        greenPiece--;
+
+        if(greenPiece == 0)
+        {
+            winnerText.SetActive(true);
+            winner.text = "Pink Wins!";
+            restartButton.SetActive(true);
+        }
+
+    }
+    public void UpdatePinkPiece()
+    {
+        pinkPiece--;
+
+        if (pinkPiece == 0)
+        {
+            winnerText.SetActive(true);
+            winner.text = "Green Wins!";
+            restartButton.SetActive(true);
         }
     }
 

@@ -12,7 +12,7 @@ public class Piece : MonoBehaviour, IPointerClickHandler
     public Vector2Int coordinates;
     public PositionCell cell;
     public bool selected = false;
-    [SerializeField]bool canMove = false;
+    [SerializeField] public bool canMove = false;
     public bool captured = false;
 
 
@@ -53,7 +53,7 @@ public class Piece : MonoBehaviour, IPointerClickHandler
             
         }
         
-        
+        gameManager.ActivateDebugSelection();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -124,8 +124,16 @@ public class Piece : MonoBehaviour, IPointerClickHandler
 
     public void IsCaptured()
     {
-        
-        captured = true;
+        if (data.isGreen == true)
+        {
+            gameManager.UpdateGreenPiece();
+        }
+        else
+        {
+            gameManager.UpdatePinkPiece();
+        }
+
+            captured = true;
         gameObject.transform.position = theKillPos.position;
         theKillPos.position += new Vector3(1f, 0);
         coordinates = new Vector2Int(0, -1);

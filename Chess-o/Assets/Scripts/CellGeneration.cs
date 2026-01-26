@@ -8,7 +8,7 @@ public class CellGeneration : MonoBehaviour
     int width = 8;
     int height = 8;
     float cellSize = 2;
-    GameObject[,] arrayCell;
+    public GameObject[,] arrayCell;
     
 
     [SerializeField] Sprite pink;
